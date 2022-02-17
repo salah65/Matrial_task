@@ -20,8 +20,12 @@ class MainActivityViewModel @Inject constructor(private val getAllMaterialsUseCa
     val getMaterialsStateFlow: StateFlow<ResponseWrapper<List<MaterialsResponseItem?>>>
         get() = mutableStateflow.asStateFlow()
 
+    init {
+        getMaterialsList()
+    }
 
-    fun getMaterialsList() {
+
+    private fun getMaterialsList() {
         viewModelScope.launch {
             val response = getAllMaterialsUseCase.invoke()
             mutableStateflow.value = response

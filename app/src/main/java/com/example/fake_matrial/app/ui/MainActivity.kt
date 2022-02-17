@@ -8,13 +8,17 @@ import androidx.lifecycle.lifecycleScope
 import com.example.fake_matrial.R
 import com.example.fake_matrial.data.mapper.mapToListOfMaterial
 import com.example.fake_matrial.data.network.ResponseWrapper
+import com.example.fake_matrial.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.collect
 
 class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainActivityViewModel>()
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         lifecycleScope.launchWhenStarted {
             viewModel.getMaterialsStateFlow.collect {
@@ -35,5 +39,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
