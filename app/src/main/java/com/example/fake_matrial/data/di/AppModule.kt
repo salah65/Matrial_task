@@ -5,6 +5,8 @@ import com.example.fake_matrial.app.MyApplication
 import com.example.fake_matrial.data.gateways.PreferencesGateway
 import com.example.fake_matrial.data.gateways.ServerGateway
 import com.example.fake_matrial.data.gateways.ServerGatewayImplementer
+import com.example.fake_matrial.data.repositoryImp.MaterialRepositoryImp
+import com.example.fake_matrial.domain.repository.MaterialRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,6 +33,11 @@ object AppModule {
     @Provides
     fun providePreferenceGatWay(application: MyApplication): PreferencesGateway =
         PreferencesGateway(application)
+
+    @Singleton
+    @Provides
+    fun provideMaterialRepository(serverGateway: ServerGateway): MaterialRepository =
+        MaterialRepositoryImp(serverGateway)
 
 
 
