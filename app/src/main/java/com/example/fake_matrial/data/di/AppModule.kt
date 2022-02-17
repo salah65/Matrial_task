@@ -7,6 +7,7 @@ import com.example.fake_matrial.data.gateways.ServerGateway
 import com.example.fake_matrial.data.gateways.ServerGatewayImplementer
 import com.example.fake_matrial.data.repositoryImp.MaterialRepositoryImp
 import com.example.fake_matrial.domain.repository.MaterialRepository
+import com.example.fake_matrial.domain.useCases.GetAllMaterialsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +22,6 @@ object AppModule {
     @Singleton
     @Provides
     fun provideApplication(@ApplicationContext app: Context): MyApplication = app as MyApplication
-
 
 
     @Singleton
@@ -39,7 +39,10 @@ object AppModule {
     fun provideMaterialRepository(serverGateway: ServerGateway): MaterialRepository =
         MaterialRepositoryImp(serverGateway)
 
-
+    @Singleton
+    @Provides
+    fun provideGetMaterialUseCase(materialRepository: MaterialRepository): GetAllMaterialsUseCase =
+        GetAllMaterialsUseCase(materialRepository)
 
 
 }
