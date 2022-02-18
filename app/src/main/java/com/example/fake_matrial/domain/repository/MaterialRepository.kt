@@ -6,4 +6,5 @@ import com.example.fake_matrial.domain.model.Material
 
 interface MaterialRepository {
     suspend fun getAllMaterial(): ResponseWrapper<List<MaterialsResponseItem?>>
+    suspend fun downloadMaterial()
 }

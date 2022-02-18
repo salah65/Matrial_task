@@ -13,4 +13,9 @@ class MaterialRepositoryImp @Inject constructor(
     override suspend fun getAllMaterial(): ResponseWrapper<List<MaterialsResponseItem?>> {
         return serverGateway.getMaterials()
     }
+
+    override suspend fun downloadMaterial() {
+        // download material from data source
+
+    }
 }

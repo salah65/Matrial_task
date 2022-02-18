@@ -11,7 +11,7 @@ import javax.inject.Inject
 class ServerGatewayImplementer @Inject constructor(private val api: Retrofit) : ServerGateway {
     override suspend fun getMaterials(): ResponseWrapper<List<MaterialsResponseItem?>> {
         return safeApiCall{
-            api.create(MaterialEndpoints::class.java).getMaterials().materialsResponse
+            api.create(MaterialEndpoints::class.java).getMaterials()
         }
     }
 
