@@ -66,6 +66,7 @@ class MaterialItemsAdapter(
             is DownloadStatus.Downloading -> {
                 holder.binding.imageView2.playAnimation()
                 holder.binding.done.visibility=View.GONE
+                holder.binding.imageView2.isEnabled=false
                 holder.binding.imageView2.visibility=View.VISIBLE
                 holder.binding.progressBar2.visibility = View.VISIBLE
                 holder.binding.progressBar2.progress =
@@ -76,11 +77,15 @@ class MaterialItemsAdapter(
                 holder.binding.imageView2.pauseAnimation()
                 holder.binding.imageView2.visibility=View.GONE
                 holder.binding.progressBar2.visibility = View.GONE
+                holder.binding.imageView2.isEnabled=false
+
                 holder.binding.progressBar2.progress = 0
             }
             is DownloadStatus.NotDownloaded -> {
                 holder.binding.done.visibility=View.GONE
                 holder.binding.imageView2.pauseAnimation()
+                holder.binding.imageView2.isEnabled=true
+
                 holder.binding.imageView2.visibility=View.VISIBLE
                 holder.binding.progressBar2.visibility = View.GONE
                 holder.binding.progressBar2.progress = 0

@@ -2,7 +2,6 @@ package com.example.fake_matrial.data.di
 
 import android.content.Context
 import com.example.fake_matrial.app.MyApplication
-import com.example.fake_matrial.data.gateways.PreferencesGateway
 import com.example.fake_matrial.data.gateways.ServerGateway
 import com.example.fake_matrial.data.gateways.ServerGatewayImplementer
 import com.example.fake_matrial.data.repositoryImp.MaterialRepositoryImp
@@ -30,10 +29,7 @@ object AppModule {
     fun provideServerGateWay(api: Retrofit): ServerGateway =
         ServerGatewayImplementer(api)
 
-    @Singleton
-    @Provides
-    fun providePreferenceGatWay(application: MyApplication): PreferencesGateway =
-        PreferencesGateway(application)
+
 
     @Singleton
     @Provides
